@@ -1,1 +1,1 @@
-Samples bundle for [flixel-monkey](http://github.com)
+Samples bundle for [flixel-monkey](https://github.com/devolonter/flixel-monkey)
