@@ -19,13 +19,15 @@ Class PlayState Extends FlxState Implements FlxOverlapNotifyListener
 	Field vsPlayerBullets:FlxGroup
 	Field vsAlienBullets:FlxGroup
 	
-	Field scoresLabel:FlxText
+	Field scoresLabel:FlxText	
+	
+	Global ScoresText:String
 	
 	Method Create:Void()
 		FlxG.Framerate = 60
 	
-		If (FlxG.Scores.Length() = 0) Then
-			FlxG.Scores.Insert(0, "WELCOME TO FLX INVADERS")
+		If (ScoresText.Length() = 0) Then
+			ScoresText = "WELCOME TO FLX INVADERS"
 		End If
 	
 		Local numPlayerBullets:Int = 8
@@ -70,7 +72,7 @@ Class PlayState Extends FlxState Implements FlxOverlapNotifyListener
 		vsAlienBullets = New FlxGroup()
 		vsAlienBullets.Add(player)
 		
-		scoresLabel = New FlxText(4, 4, FlxG.Width - 8, FlxG.Scores.Get(0))		
+		scoresLabel = New FlxText(4, 4, FlxG.Width - 8, ScoresText)		
 		scoresLabel.Alignment = FlxText.ALIGN_CENTER		
 		Add(scoresLabel)
 	End Method
@@ -87,13 +89,13 @@ Class PlayState Extends FlxState Implements FlxOverlapNotifyListener
 		Next
 		
 		If (Not player.exists) Then
-			FlxG.Scores.Set(0, "YOU LOST")
-			scoresLabel.Text = FlxG.Scores.Get(0)
+			ScoresText = "YOU LOST"
+			scoresLabel.Text = ScoresText
 			FlxG.ResetState()
 			
 		ElseIf (aliens.GetFirstExtant() = Null)
-			FlxG.Scores.Set(0, "YOU WON")
-			scoresLabel.Text = FlxG.Scores.Get(0)
+			ScoresText = "YOU WON"
+			scoresLabel.Text = ScoresText
 			FlxG.ResetState()
 		End If
 		
