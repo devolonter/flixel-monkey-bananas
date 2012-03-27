@@ -348,10 +348,8 @@ Class HudInvoker Implements FlxBasicInvoker
 
 	Method Invoke:Void(object:FlxBasic)
 		Local flxObject:FlxObject = FlxObject(object)
-		flxObject.scrollFactor = New FlxPoint()
-			
-		flxObject.cameras = New IntSet()
-		flxObject.cameras.Insert(FlxG.Camera.ID)
+		flxObject.scrollFactor = New FlxPoint()			
+		flxObject.Cameras = [FlxG.Camera.ID]
 	End Method
 
 End Class
