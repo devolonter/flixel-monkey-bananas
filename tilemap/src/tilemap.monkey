@@ -9,7 +9,7 @@ Import flixel.flxtext.driver.angelfont
 Class Tilemap Extends FlxGame
 
 	Method New()
-		Super.New(400, 300, PlayState.ClassObject)
+		Super.New(400, 300, GetClass("PlayState"))
 	End Method
 	
 	Method OnContentInit:Void()
@@ -23,7 +23,7 @@ Class Tilemap Extends FlxGame
 		FlxAssetsManager.AddString(Assets.EMPTY_MAP, "default_empty.txt")
 		
 		FlxTextAngelFontDriver.Init()
-		FlxText.SetDefaultDriver(AngelfontTextDriver)
+		FlxText.SetDefaultDriver(ClassInfo(FlxTextAngelFontDriver.ClassObject))
 	End Method
 
 End Class

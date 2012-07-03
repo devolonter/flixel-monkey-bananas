@@ -5,6 +5,8 @@ Original source code:
 
 Import src.pathfinding
 
+#REFLECTION_FILTER="src*|flixel*"
+
 Function Main()
 	New PathFinding()
 End Function

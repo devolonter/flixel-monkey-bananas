@@ -9,7 +9,7 @@ Import flixel.flxtext.driver.angelfont
 Class Replay Extends FlxGame
 
 	Method New()
-		Super.New(400, 300, PlayState.ClassObject)
+		Super.New(400, 300, GetClass("PlayState"))
 	End Method
 	
 	Method OnContentInit:Void()
@@ -17,7 +17,7 @@ Class Replay Extends FlxGame
 		FlxAssetsManager.AddString(Assets.MAP, "simple_map.txt")
 		
 		FlxTextAngelFontDriver.Init()
-		FlxText.SetDefaultDriver(AngelfontTextDriver)
+		FlxText.SetDefaultDriver(ClassInfo(FlxTextAngelFontDriver.ClassObject))
 	End Method
 
 End Class

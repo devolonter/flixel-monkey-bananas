@@ -6,12 +6,10 @@ Import assets
 
 Import flixel.flxtext.driver.angelfont
 
-#MOJO_IMAGE_FILTERING_ENABLED="false"
-
 Class Mode Extends FlxGame
 	
 	Method New()
-		Super.New(320, 240, MenuState.ClassObject, 2, 50, 50)
+		Super.New(320, 240, GetClass("MenuState"), 2, 50, 50)
 		useVirtualResolution = False
 	End Method
 	
@@ -50,7 +48,7 @@ Class Mode Extends FlxGame
 		FlxAssetsManager.AddString(StringAssests.ATTRACT_2, "attract2.txt")
 		
 		FlxTextAngelFontDriver.Init()
-		FlxText.SetDefaultDriver(AngelfontTextDriver)
+		FlxText.SetDefaultDriver(ClassInfo(FlxTextAngelFontDriver.ClassObject))
 		
 		Local systemFont:FlxFont = FlxAssetsManager.GetFont(FlxText.SYSTEM_FONT, FlxText.DRIVER_ANGELFONT)
 		systemFont.SetPath(32, "big_system_font.txt")

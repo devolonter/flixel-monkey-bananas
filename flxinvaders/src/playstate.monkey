@@ -7,8 +7,6 @@ Import alien
 
 Class PlayState Extends FlxState Implements FlxOverlapNotifyListener
 
-	Global ClassObject:FlxClass = New PlayStateClass()
-	
 	Field caption:FlxText
 	
 	Field player:PlayerShip
@@ -83,7 +81,7 @@ Class PlayState Extends FlxState Implements FlxOverlapNotifyListener
 		
 		For Local alien:FlxBasic = Eachin aliens
 			If (Alien(alien).SwitchDirectionNeeded()) Then
-				aliens.CallAll(Alien.SwitchDirection)
+				aliens.CallAll("SwitchDirection")
 				Exit
 			End If
 		Next
@@ -108,22 +106,6 @@ Class PlayState Extends FlxState Implements FlxOverlapNotifyListener
 	Method OnOverlapNotify:Void(object1:FlxObject,object2:FlxObject)
 		object1.Kill()
 		object2.Kill()
-	End Method
-	
-	Method GetClass:FlxClass()
-		Return ClassObject
-	End Method
-
-End Class
-
-Class PlayStateClass Implements FlxClass
-	
-	Method CreateInstance:Object()
-		Return New PlayState()
-	End Method
-	
-	Method InstanceOf:Bool(Object:Object)
-		Return (PlayState(Object) <> Null)
 	End Method
 
 End Class

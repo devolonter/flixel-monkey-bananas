@@ -4,8 +4,6 @@ Import flixel
 Import assets
 
 Class PlayState Extends FlxState Implements FlxReplayListener
-
-	Global ClassObject:FlxClass = New PlayStateClass()
 	
 	Field hintText:FlxText
 	
@@ -118,22 +116,6 @@ Class PlayState Extends FlxState Implements FlxReplayListener
 	
 	Method OnReplayComplete:Void()
 		StartRecord()
-	End Method
-	
-	Method GetClass:FlxClass()
-		Return PlayState.ClassObject
-	End Method
-
-End Class
-
-Class PlayStateClass Implements FlxClass
-	
-	Method CreateInstance:Object()
-		Return New PlayState()
-	End Method
-	
-	Method InstanceOf:Bool(object:Object)
-		Return PlayState(object) <> Null
 	End Method
 
 End Class

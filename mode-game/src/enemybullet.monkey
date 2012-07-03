@@ -5,7 +5,7 @@ Import assets
 
 Class EnemyBullet Extends FlxSprite
 	
-	Global ClassObject:FlxClass = New EnemyBulletClass()
+	Global ClassObject:Object
 
 	Field speed:Float
 	Field _helperPoint:FlxPoint
@@ -53,17 +53,5 @@ Class EnemyBullet Extends FlxSprite
 		Solid = True
 		Play("idle")
 	End Method
-
-End Class
-
-Class EnemyBulletClass Implements FlxClass
-		
-	Method CreateInstance:Object()
-		Return New EnemyBullet()
-	End Method
-	
-	Method InstanceOf:Bool(object:Object)
-		Return EnemyBullet(object) <> Null
-	End Method	
 
 End Class

@@ -122,7 +122,7 @@ Public
 				FlxG.Play(SoundAssets.JAM)
 			Else
 				GetMidpoint(_heplerPoint)
-				Bullet(_bullets.Recycle(Bullet.ClassObject)).Shoot(_heplerPoint, _aim)
+				Bullet(_bullets.Recycle(ClassInfo(Bullet.ClassObject))).Shoot(_heplerPoint, _aim)
 				
 				If (_aim = DOWN) velocity.y -= 36
 			End If

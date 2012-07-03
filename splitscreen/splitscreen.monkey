@@ -5,6 +5,8 @@ Original source code:
 
 Import src.splitscreen
 
+#REFLECTION_FILTER="src*|flixel*"
+
 Function Main()
 	New SplitScreen()
 End Function

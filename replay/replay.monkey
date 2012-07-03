@@ -5,6 +5,8 @@ Original source code:
 
 Import src.replay
 
+#REFLECTION_FILTER="src*|flixel*"
+
 Function Main()
 	New Replay()
 End Function

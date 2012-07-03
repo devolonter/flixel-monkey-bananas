@@ -4,8 +4,6 @@ Import flixel
 Import assets
 
 Class PlayState Extends FlxState
-
-	Global ClassObject:FlxClass = New PlayStateClass()
 	
 	Field topText:FlxText
 	
@@ -346,16 +344,4 @@ Class BtnClickListener Implements FlxButtonClickListener
 	Method OnButtonClick:Void()
 	End Method
 	
-End Class
-
-Class PlayStateClass Implements FlxClass
-	
-	Method CreateInstance:Object()
-		Return New PlayState()
-	End Method
-	
-	Method InstanceOf:Bool(object:Object)
-		Return PlayState(object) <> Null
-	End Method
-
 End Class

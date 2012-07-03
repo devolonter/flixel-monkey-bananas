@@ -8,8 +8,6 @@ Import victorystate
 
 Class PlayState Extends FlxState Implements FlxOverlapNotifyListener, FlxCameraFadeListener
 
-	Global ClassObject:FlxClass = New PlayStateClass()
-
 Private
 	Field _blocks:FlxGroup
 	Field _decorations:FlxGroup
@@ -123,7 +121,8 @@ Public
 		_gunjam.visible = False;
 		_hud.Add(_gunjam)
 		
-		_hud.CallAll(New HudInvoker())
+		_hud.SetAll("scrollFactor", New FlxPoint())
+		_hud.SetAll("Cameras", ArrayBoxer<Int>.Box([FlxG.Camera.ID]))
 		
 		FlxG.PlayMusic(SoundAssets.MODE)
 		FlxG.Flash($FF131C1B)
@@ -231,10 +230,6 @@ Public
 		FlxG.SwitchState(New VictoryState())
 	End Method
 	
-	Method GetClass:FlxClass()
-		Return ClassObject
-	End Method
-	
 Private
 	Method _GenerateLevel:Void()
 		Local r:Int = 160
@@ -340,28 +335,6 @@ Private
 			camera.Follow(sp)
 			FlxG.AddCamera(camera)
 		End If
-	End Method
-
-End Class
-
-Class HudInvoker Implements FlxBasicInvoker
-
-	Method Invoke:Void(object:FlxBasic)
-		Local flxObject:FlxObject = FlxObject(object)
-		flxObject.scrollFactor = New FlxPoint()			
-		flxObject.Cameras = [FlxG.Camera.ID]
-	End Method
-
-End Class
-
-Class PlayStateClass Implements FlxClass
-	
-	Method CreateInstance:Object()
-		Return New PlayState()
-	End Method
-	
-	Method InstanceOf:Bool(object:Object)
-		Return PlayState(object) <> Null
 	End Method
 
 End Class

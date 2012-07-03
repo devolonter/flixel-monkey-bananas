@@ -4,8 +4,6 @@ Import flixel
 Import assets
 
 Class PlayState Extends FlxState
-
-	Global ClassObject:FlxClass = New PlayStateClass()
 	
 	Field level:FlxTilemap
 	Field player1:FlxSprite
@@ -83,18 +81,6 @@ Class PlayState Extends FlxState
 		Super.Update()
 		
 		FlxG.Collide()
-	End Method
-
-End Class
-
-Class PlayStateClass Implements FlxClass
-	
-	Method CreateInstance:Object()
-		Return New PlayState()
-	End Method
-	
-	Method InstanceOf:Bool(object:Object)
-		Return PlayState(object) <> Null
 	End Method
 
 End Class

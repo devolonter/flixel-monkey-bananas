@@ -9,7 +9,7 @@ Import flixel.flxtext.driver.angelfont
 Class PathFinding Extends FlxGame
 
 	Method New()
-		Super.New(400, 300, PlayState.ClassObject)
+		Super.New(400, 300, GetClass("PlayState"))
 	End Method
 	
 	Method OnContentInit:Void()
@@ -17,7 +17,7 @@ Class PathFinding Extends FlxGame
 		FlxAssetsManager.AddString(Assets.MAP, "pathfinding_map.txt")
 		
 		FlxTextAngelFontDriver.Init()
-		FlxText.SetDefaultDriver(AngelfontTextDriver)
+		FlxText.SetDefaultDriver(ClassInfo(FlxTextAngelFontDriver.ClassObject))
 	End Method
 
 End Class
