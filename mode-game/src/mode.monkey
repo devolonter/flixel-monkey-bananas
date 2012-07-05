@@ -9,8 +9,13 @@ Import flixel.flxtext.driver.angelfont
 Class Mode Extends FlxGame
 	
 	Method New()
-		Super.New(320, 240, GetClass("MenuState"), 2, 50, 50)
-		useVirtualResolution = False
+		Super.New(320, 240, GetClass("MenuState"), 1, 50, 50)
+	End Method
+	
+	Method OnCreate:Int()
+		FlxG.SetResolutionPolicy(New RatioResolutionPolicy())
+		Super.OnCreate()
+		Return 0
 	End Method
 	
 	Method OnContentInit:Void()

@@ -46,9 +46,8 @@ Class MenuState Extends FlxState Implements FlxButtonClickListener, FlxCameraFad
 		timer = 0
 		attractMode = False
 		
-		FlxG.Mouse.Show(ImageAssets.CURSOR, 2)
-		FlxG.FullScreen()
-	End Method	
+		FlxG.Mouse.Show(ImageAssets.CURSOR)
+	End Method
 	
 	Method Destroy:Void()
 		Super.Destroy()
