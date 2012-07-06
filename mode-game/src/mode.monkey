@@ -13,8 +13,8 @@ Class Mode Extends FlxGame
 	End Method
 	
 	Method OnCreate:Int()
-		FlxG.SetResolutionPolicy(New RatioResolutionPolicy())
 		Super.OnCreate()
+		FlxG.SetResolutionPolicy(New RatioResolutionPolicy())
 		Return 0
 	End Method
 	
