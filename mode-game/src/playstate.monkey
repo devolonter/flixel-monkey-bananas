@@ -129,7 +129,7 @@ Public
 		_fading = False
 		
 		'move main camera in screen center
-		FlxG.FullScreen()		
+		'FlxG.FullScreen()		
 	End Method
 	
 	Method Destroy:Void()
@@ -331,7 +331,7 @@ Private
 			_spawners.Add(sp)
 			
 			_hud.Add(New FlxSprite(3 + (_spawners.Length-1)*16, 3, ImageAssets.MINIFRAME))
-			Local camera:FlxCamera = New FlxCamera(10 + (_spawners.Length-1)*32,10,24,24,1)
+			Local camera:FlxCamera = New FlxCamera(5 + (_spawners.Length - 1) * 16, 5, 24, 24, 0.5)
 			camera.Follow(sp)
 			FlxG.AddCamera(camera)
 		End If
