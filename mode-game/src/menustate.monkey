@@ -6,8 +6,6 @@ Import playstate
 
 Class MenuState Extends FlxState Implements FlxButtonClickListener, FlxCameraFadeListener, FlxReplayListener
 	
-	Global ClassObject:FlxClass = New MenuStateClass()
-	
 	Field gibs:FlxEmitter
 	Field playButton:FlxButton
 	Field title1:FlxText
@@ -48,9 +46,8 @@ Class MenuState Extends FlxState Implements FlxButtonClickListener, FlxCameraFad
 		timer = 0
 		attractMode = False
 		
-		FlxG.Mouse.Show(ImageAssets.CURSOR, 2)
-		FlxG.FullScreen()
-	End Method	
+		FlxG.Mouse.Show(ImageAssets.CURSOR)
+	End Method
 	
 	Method Destroy:Void()
 		Super.Destroy()
@@ -140,10 +137,6 @@ Class MenuState Extends FlxState Implements FlxButtonClickListener, FlxCameraFad
 	Method OnReplayComplete:Void()
 		FlxG.Fade($ff131c1b, 1, New DemoCompleteListener())
 	End Method
-	
-	Method GetClass:FlxClass()
-		Return ClassObject
-	End Method
 
 End Class
 
@@ -170,16 +163,4 @@ Class FlixelButtonClickListener Implements FlxButtonClickListener
 		FlxU.OpenURL("http://flixel.org")
 	End Method
 	
-End Class
-
-Class MenuStateClass Implements FlxClass
-	
-	Method CreateInstance:Object()
-		Return New MenuState()
-	End Method
-	
-	Method InstanceOf:Bool(object:Object)
-		Return MenuState(object) <> Null
-	End Method
-
 End Class

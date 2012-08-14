@@ -5,6 +5,7 @@ Original source code:
 
 Import src.particles
 
+#REFLECTION_FILTER="src*|flixel.flx*|flixel.plugin*"
 #MOJO_IMAGE_FILTERING_ENABLED="false"
 
 Function Main()

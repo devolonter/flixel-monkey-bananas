@@ -8,18 +8,16 @@ Import playership
 Import alien
 Import assets
 
-#MOJO_IMAGE_FILTERING_ENABLED="false"
-
 Class FlxInvaders Extends FlxGame
 	
 	Method New()		
-		Super.New(320, 240, PlayState.ClassObject)
+		Super.New(320, 240, GetClass("PlayState"))
 		ShowMouse()
 	End Method
 	
 	Method OnContentInit:Void()
 		FlxTextAngelFontDriver.Init()
-		FlxText.SetDefaultDriver(AngelfontTextDriver)
+		FlxText.SetDefaultDriver(ClassInfo(FlxTextAngelFontDriver.ClassObject))
 		
 		'Register assets
 		FlxAssetsManager.AddImage(Assets.IMAGE_PLAYER_SHIP, "ship.png")

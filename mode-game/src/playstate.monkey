@@ -8,8 +8,6 @@ Import victorystate
 
 Class PlayState Extends FlxState Implements FlxOverlapNotifyListener, FlxCameraFadeListener
 
-	Global ClassObject:FlxClass = New PlayStateClass()
-
 Private
 	Field _blocks:FlxGroup
 	Field _decorations:FlxGroup
@@ -123,14 +121,15 @@ Public
 		_gunjam.visible = False;
 		_hud.Add(_gunjam)
 		
-		_hud.CallAll(New HudInvoker())
+		_hud.SetAll("scrollFactor", New FlxPoint())
+		_hud.SetAll("Cameras", ArrayBoxer<Int>.Box([FlxG.Camera.ID]))
 		
 		FlxG.PlayMusic(SoundAssets.MODE)
 		FlxG.Flash($FF131C1B)
 		_fading = False
 		
 		'move main camera in screen center
-		FlxG.FullScreen()		
+		'FlxG.FullScreen()		
 	End Method
 	
 	Method Destroy:Void()
@@ -229,10 +228,6 @@ Public
 	Method OnFadeComplete:Void()
 		FlxG.Music.Stop()
 		FlxG.SwitchState(New VictoryState())
-	End Method
-	
-	Method GetClass:FlxClass()
-		Return ClassObject
 	End Method
 	
 Private
@@ -336,32 +331,10 @@ Private
 			_spawners.Add(sp)
 			
 			_hud.Add(New FlxSprite(3 + (_spawners.Length-1)*16, 3, ImageAssets.MINIFRAME))
-			Local camera:FlxCamera = New FlxCamera(10 + (_spawners.Length-1)*32,10,24,24,1)
+			Local camera:FlxCamera = New FlxCamera(5 + (_spawners.Length - 1) * 16, 5, 24, 24, 0.5)
 			camera.Follow(sp)
 			FlxG.AddCamera(camera)
 		End If
-	End Method
-
-End Class
-
-Class HudInvoker Implements FlxBasicInvoker
-
-	Method Invoke:Void(object:FlxBasic)
-		Local flxObject:FlxObject = FlxObject(object)
-		flxObject.scrollFactor = New FlxPoint()			
-		flxObject.Cameras = [FlxG.Camera.ID]
-	End Method
-
-End Class
-
-Class PlayStateClass Implements FlxClass
-	
-	Method CreateInstance:Object()
-		Return New PlayState()
-	End Method
-	
-	Method InstanceOf:Bool(object:Object)
-		Return PlayState(object) <> Null
 	End Method
 
 End Class

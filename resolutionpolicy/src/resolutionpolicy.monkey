@@ -1,17 +1,19 @@
 Strict
 
 Import flixel
+Import flixel.flxtext.driver.angelfont
 Import playstate
 
-Import flixel.flxtext.driver.angelfont
-
-Class Particles Extends FlxGame
-
+Class ResolutionPolicy Extends FlxGame
+	
 	Method New()
-		Super.New(400, 300, GetClass("PlayState"))
+		Super.New(640, 480, GetClass("PlayState"))
 	End Method
 	
 	Method OnContentInit:Void()
+		FlxAssetsManager.AddImage("bg", "bg.png")
+		FlxAssetsManager.AddImage("ship", "ship.png")
+
 		FlxTextAngelFontDriver.Init()
 		FlxText.SetDefaultDriver(ClassInfo(FlxTextAngelFontDriver.ClassObject))
 	End Method

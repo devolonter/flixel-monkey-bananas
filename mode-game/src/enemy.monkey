@@ -6,7 +6,7 @@ Import enemybullet
 
 Class Enemy Extends FlxSprite
 
-	Global ClassObject:FlxClass = New EnemyClass()
+	Global ClassObject:Object
 	
 Private
 	Field _player:Player
@@ -114,7 +114,7 @@ Public
 			End If
 			
 			If (shoot) Then
-				Local b:EnemyBullet = EnemyBullet(_bullets.Recycle(EnemyBullet.ClassObject))				
+				Local b:EnemyBullet = EnemyBullet(_bullets.Recycle(ClassInfo(EnemyBullet.ClassObject)))				
 				b.Shoot(GetMidpoint(_helperPoint), angle)
 			End If
 		End If
@@ -165,17 +165,5 @@ Private
 	Method _AngleTowardPlayer:Float()
 		Return FlxU.GetAngle(GetMidpoint(_helperPoint), _player.GetMidpoint(_playerMidpoint))
 	End Method
-
-End Class
-
-Class EnemyClass Implements FlxClass
-		
-	Method CreateInstance:Object()
-		Return New Enemy()
-	End Method
-	
-	Method InstanceOf:Bool(object:Object)
-		Return Enemy(object) <> Null
-	End Method	
 
 End Class

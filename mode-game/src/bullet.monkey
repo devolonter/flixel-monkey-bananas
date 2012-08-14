@@ -5,7 +5,7 @@ Import assets
 
 Class Bullet Extends FlxSprite
 
-	Global ClassObject:FlxClass = New BulletClass()
+	Global ClassObject:Object
 	
 	Field speed:Float
 	
@@ -67,17 +67,5 @@ Class Bullet Extends FlxSprite
 				velocity.x = speed
 		End Select
 	End Method
-
-End Class
-
-Class BulletClass Implements FlxClass
-		
-	Method CreateInstance:Object()
-		Return New Bullet()
-	End Method
-	
-	Method InstanceOf:Bool(object:Object)
-		Return Bullet(object) <> Null
-	End Method	
 
 End Class

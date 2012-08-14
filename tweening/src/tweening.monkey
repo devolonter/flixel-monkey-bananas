@@ -2,13 +2,12 @@ Strict
 
 Import flixel
 Import playstate
-
 Import flixel.flxtext.driver.angelfont
 
-Class Particles Extends FlxGame
+Class Tweening Extends FlxGame
 
 	Method New()
-		Super.New(400, 300, GetClass("PlayState"))
+		Super.New(640, 480, GetClass("PlayState"), 1, 60, 60)
 	End Method
 	
 	Method OnContentInit:Void()

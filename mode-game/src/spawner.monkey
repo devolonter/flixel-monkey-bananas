@@ -106,7 +106,7 @@ Public
 Private
 	Method _MakeBot:Void()
 		If (_bots.CountLiving() > 10) Return	
-		Enemy(_bots.Recycle(Enemy.ClassObject)).Init(x + width/2, y + height/2, _botBullets, _botGibs, _player)
+		Enemy(_bots.Recycle(ClassInfo(Enemy.ClassObject))).Init(x + width/2, y + height/2, _botBullets, _botGibs, _player)
 	End Method	
 
 End Class

@@ -5,6 +5,9 @@ Original source code:
 
 Import src.splitscreen
 
+#REFLECTION_FILTER="src*|flixel.flx*|flixel.plugin*"
+#MOJO_IMAGE_FILTERING_ENABLED="false"
+
 Function Main()
 	New SplitScreen()
 End Function

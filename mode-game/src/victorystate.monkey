@@ -30,9 +30,6 @@ Public
 		Local text:FlxText = new FlxText(0,FlxG.Height/2-35,FlxG.Width,"VICTORY~n~nSCORE: "+FlxG.Score)
 		text.SetFormat(FlxText.SYSTEM_FONT,16,$d8eba2,FlxText.ALIGN_CENTER)
 		Add(text)
-		
-		'move main camera in screen center
-		FlxG.FullScreen()
 	End Method
 	
 	Method Update:Void()

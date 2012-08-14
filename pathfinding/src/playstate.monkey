@@ -5,8 +5,6 @@ Import assets
 
 Class PlayState Extends FlxState
 
-	Global ClassObject:FlxClass = New PlayStateClass()
-
 	Const TILE_WIDTH:Int = 12
 	Const TILE_HEIGHT:Int = 12	
 	
@@ -155,16 +153,4 @@ Class BtnClickListener Implements FlxButtonClickListener
 	Method OnButtonClick:Void()
 	End Method
 	
-End Class
-
-Class PlayStateClass Implements FlxClass
-	
-	Method CreateInstance:Object()
-		Return New PlayState()
-	End Method
-	
-	Method InstanceOf:Bool(object:Object)
-		Return PlayState(object) <> Null
-	End Method
-
 End Class

@@ -6,8 +6,6 @@ Import assets
 
 Class Alien Extends FlxSprite
 	
-	Global SwitchDirection:SwitchDirectionInvoker = New SwitchDirectionInvoker()	
-	
 Private
 	Const _DEFAULT_ANIMATION:String = "Default"
 
@@ -54,21 +52,15 @@ Public
 	Method ResetShotClock:Void()
 		_shotClock = 1 + FlxG.Random() * 20
 	End Method
-
-End Class
-
-Class SwitchDirectionInvoker Implements FlxBasicInvoker
-
-	Method Invoke:Void(Object:FlxBasic)
-		Local alien:Alien = Alien(Object)
-		
-		If (alien.velocity.x > 0) Then
-			alien.x = alien._originalX + 8
+	
+	Method SwitchDirection:Void()		
+		If (velocity.x > 0) Then
+			x = _originalX + 8
 		Else
-			alien.x = alien._originalX - 8
+			x = _originalX - 8
 		End If
 		
-		alien.velocity.x = -alien.velocity.x		
+		velocity.x = -velocity.x		
 	End Method
 
 End Class

@@ -5,6 +5,9 @@ Original source code:
 
 Import src.replay
 
+#REFLECTION_FILTER="src*|flixel.flx*|flixel.plugin*"
+#MOJO_IMAGE_FILTERING_ENABLED="false"
+
 Function Main()
 	New Replay()
 End Function
