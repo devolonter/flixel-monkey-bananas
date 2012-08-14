@@ -56,10 +56,9 @@ Class PlayState Extends FlxState
 		easeText = New FlxText(10, 30, FlxG.Width - 20, "")
 		easeText.Size = 12
 		
-		helpText = New FlxText(10, FlxG.Height - 50, FlxG.Width - 20, "")
+		helpText = New FlxText(10, FlxG.Height - 20, FlxG.Width - 20, "")
 		helpText.Alignment = FlxText.ALIGN_CENTER
-		helpText.Size = 12
-		helpText.Text = "Press UP or DOWN keys to change tweening~nPress SPACE to change current ease function"
+		helpText.Text = "Press UP or DOWN keys to change tweening. Press SPACE to change current ease function"
 		
 		Add(tweenText)
 		Add(easeText)
