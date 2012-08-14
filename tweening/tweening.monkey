@@ -1,7 +1,7 @@
 
 Import src.tweening
 
-#REFLECTION_FILTER="src*|flixel*|flixel.system.tweens.util.ease"
+#REFLECTION_FILTER="src*|flixel.flx*|flixel.plugin*|flixel.system.tweens.util.ease"
 #MOJO_IMAGE_FILTERING_ENABLED="false"
 
 Function Main()

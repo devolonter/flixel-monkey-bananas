@@ -6,7 +6,7 @@ Original source code:
 Import flixel
 Import src.flxinvaders
 
-#REFLECTION_FILTER="src*|flixel*"
+#REFLECTION_FILTER="src*|flixel.flx*|flixel.plugin*"
 #MOJO_IMAGE_FILTERING_ENABLED="false"
 
 Function Main()		

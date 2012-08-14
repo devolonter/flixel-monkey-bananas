@@ -5,8 +5,8 @@
 
 Import assets
 
+#REFLECTION_FILTER="playstate|assets|flixel.flx*|flixel.plugin*"
 #MOJO_IMAGE_FILTERING_ENABLED="false"
-#REFLECTION_FILTER="flixel*|playstate|assets"
 
 Function Main()
 	New FlixelGame()
