@@ -119,9 +119,7 @@ Public
 Private
 	Method AddBunies:Void(numToAdd:Int)
 		For Local i:Int = 0 Until numToAdd
-			bunny = Bunny(bunnies.Recycle(ClassInfo(Bunny.ClassObject)))
-			bunny.Create(gravity)
-			bunnies.Add(bunny)
+			bunnies.Add(New Bunny(gravity))
 		Next
 	End Method
 	
@@ -131,7 +129,8 @@ Private
 		For Local i:Int = 0 Until numToRemove
 			bunny = Bunny(bunnies.GetFirstExtant())
 			bunnies.Remove(bunny, True)
-			bunny.Kill()
+			bunny.Destroy()
+			bunny = Null
 		Next
 	End Method
 
