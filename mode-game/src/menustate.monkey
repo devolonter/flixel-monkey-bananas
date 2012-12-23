@@ -34,12 +34,14 @@ Class MenuState Extends FlxState Implements FlxButtonClickListener, FlxCameraFad
 		title1.Size = 32
 		title1.Color = $3A5C39
 		title1.velocity.x = -FlxG.Width
+		title1.moves = True
 		Add(title1)
 		
 		title2 = New FlxText(-60, title1.y, title1.width, "de")
 		title2.Size = title1.Size
 		title2.Color = title1.Color
 		title2.velocity.x = FlxG.Width
+		title2.moves = True
 		Add(title2)
 		
 		fading = False
