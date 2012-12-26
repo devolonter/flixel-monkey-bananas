@@ -9,7 +9,7 @@ Import flixel.flxtext.driver.angelfont
 Class Mode Extends FlxGame
 	
 	Method New()
-		Super.New(320, 240, GetClass("MenuState"), 1, 50, 50)
+		Super.New(320, 240, GetClass("MenuState"), 1, 60)
 	End Method
 	
 	Method OnCreate:Int()

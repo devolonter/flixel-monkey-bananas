@@ -9,9 +9,7 @@ Class PlayState Extends FlxState
 	Field player1:FlxSprite
 	Field player2:FlxSprite
 	
-	Method Create:Void()
-		FlxG.Framerate = 60
-	
+	Method Create:Void()	
 		FlxG.Mouse.Show()
 		
 		level = New FlxTilemap()

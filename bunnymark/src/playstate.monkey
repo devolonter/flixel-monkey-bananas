@@ -78,7 +78,7 @@ Public
 		bunnyCounter.SetFormat(FlxText.SYSTEM_FONT, 22, FlxG.BLACK, FlxText.ALIGN_CENTER)
 		Add(bunnyCounter)
 		
-		fpsCounter = New FlxText(0, bunnyCounter.y + bunnyCounter.height + 10, FlxG.Width - 20, FlxG.Width + "x" + FlxG.Height + "~n" + "FPS: " + FlxG.Framerate + "/" + UpdateRate())
+		fpsCounter = New FlxText(0, bunnyCounter.y + bunnyCounter.height + 10, FlxG.Width - 20, FlxG.Width + "x" + FlxG.Height + "~n" + "FPS: " + FlxG.Updaterate + "/" + UpdateRate())
 		fpsCounter.SetFormat(FlxText.SYSTEM_FONT, 22, FlxG.BLACK, FlxText.ALIGN_CENTER)
 		Add(fpsCounter)
 		
@@ -91,7 +91,7 @@ Public
 		Local t:Int = Millisecs()
 	
 		If (t - lastFpsTime >= 1000) Then
-			If (fps = 0) fps = FlxG.Framerate
+			If (fps = 0) fps = FlxG.Updaterate
 		
 			fpsCounter.Text = FlxG.Width + "x" + FlxG.Height + "~n" + "FPS: " + fps + "/" + UpdateRate()
 			lastFpsTime = t
