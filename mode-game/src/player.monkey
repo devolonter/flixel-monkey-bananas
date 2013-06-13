@@ -55,7 +55,7 @@ Public
 		_heplerPoint = Null	
 	End Method
 	
-	Method Update:Void()
+	Method Update:Void()	
 		If (Not alive) Then
 			_restart += FlxG.Elapsed
 			

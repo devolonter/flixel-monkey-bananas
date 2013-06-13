@@ -7,7 +7,11 @@ Import playstate
 Class MenuState Extends FlxState Implements FlxButtonClickListener, FlxCameraFadeListener, FlxReplayListener
 	
 	Field gibs:FlxEmitter
+	
 	Field playButton:FlxButton
+	Field flixelButton:FlxButton
+	Field dannyButton:FlxButton
+	
 	Field title1:FlxText
 	Field title2:FlxText
 	Field fading:Bool
@@ -83,14 +87,14 @@ Class MenuState Extends FlxState Implements FlxButtonClickListener, FlxCameraFad
 			text.Size = 8
 			Add(text)
 			
-			Local flixelButton:FlxButton = New FlxButton(FlxG.Width / 2 - 40, FlxG.Height / 3 + 54, 
-				"flixel.org", New FlixelButtonClickListener())
+			flixelButton = New FlxButton(FlxG.Width / 2 - 40, FlxG.Height / 3 + 54,
+				"flixel.org", Self)
 			flixelButton.Color = $FF729954
 			flixelButton.label.Color = $FFD8EBA2
 			Add(flixelButton)
 			
-			Local dannyButton:FlxButton = New FlxButton(flixelButton.x, flixelButton.y + 22, 
-				"music", New DannyButtonClickListener())
+			dannyButton = New FlxButton(flixelButton.x, flixelButton.y + 22,
+				"music", Self)
 			dannyButton.Color = flixelButton.Color
 			dannyButton.label.Color = flixelButton.label.Color
 			Add(dannyButton)
@@ -119,12 +123,23 @@ Class MenuState Extends FlxState Implements FlxButtonClickListener, FlxCameraFad
 		End If
 	End Method
 	
-	Method OnButtonClick:Void()		
-		playButton.exists = False
-		FlxG.Play(SoundAssets.HIT_2)
+	Method OnButtonClick:Void(button:FlxButton)
+		Select button
+			Case playButton
+				playButton.exists = False
+				FlxG.Play(SoundAssets.HIT_2)
+				
+			Case flixelButton
+				FlxU.OpenURL("http://flixel.org")
+				
+			Case dannyButton
+				FlxU.OpenURL("http://dbsoundworks.com")
+				
+		End Select
+		
 	End Method
 	
-	Method OnFadeComplete:Void()
+	Method OnCameraFadeComplete:Void(camera:FlxCamera)
 		If (attractMode) Then
 			If (FlxG.Random() < 0.5) Then
 				FlxG.LoadReplay(FlxAssetsManager.GetString(StringAssests.ATTRACT_1) ,new PlayState(),[KEY_ESCAPE, KEY_X, KEY_C], 22, Self)
@@ -144,25 +159,9 @@ End Class
 
 Class DemoCompleteListener Implements FlxCameraFadeListener
 	
-	Method OnFadeComplete:Void()
+	Method OnCameraFadeComplete:Void(camera:FlxCamera)
 		FlxG.StopReplay()
 		FlxG.ResetGame()
 	End Method
 
-End Class
-
-Class DannyButtonClickListener Implements FlxButtonClickListener
-
-	Method OnButtonClick:Void()
-		FlxU.OpenURL("http://dbsoundworks.com")
-	End Method
-	
-End Class
-
-Class FlixelButtonClickListener Implements FlxButtonClickListener
-
-	Method OnButtonClick:Void()
-		FlxU.OpenURL("http://flixel.org")
-	End Method
-	
 End Class
