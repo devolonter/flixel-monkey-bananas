@@ -1,3 +1,4 @@
 *.build
 *.jungle*
 *.jiproj*
+debug.log
