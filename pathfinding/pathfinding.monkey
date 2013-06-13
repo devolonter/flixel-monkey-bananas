@@ -5,7 +5,7 @@ Original source code:
 
 Import src.pathfinding
 
-#REFLECTION_FILTER="src*|flixel.flx*|flixel.plugin*"
+#REFLECTION_FILTER="src*"
 #MOJO_IMAGE_FILTERING_ENABLED=False
 #FLX_WEBGL_ENABLED=True
 

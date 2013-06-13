@@ -3,7 +3,7 @@ Strict
 Import flixel
 Import assets
 
-Class PlayState Extends FlxState
+Class PlayState Extends FlxState Implements FlxButtonClickListener
 
 	Const TILE_WIDTH:Int = 12
 	Const TILE_HEIGHT:Int = 12	
@@ -38,13 +38,13 @@ Class PlayState Extends FlxState
 		unit.MakeGraphic(TILE_WIDTH, TILE_HEIGHT, $FFFF0000)
 		Add(unit)
 		
-		btnFindPath = New FlxButton(320, 10, "Find Path", New BtnFindPathClickListener(Self))
+		btnFindPath = New FlxButton(320, 10, "Find Path", Self)
 		Add(btnFindPath)
 		
-		btnStopUnit = New FlxButton(320, 30, "Stop Unit", New BtnStopUnitClickListener(Self))
+		btnStopUnit = New FlxButton(320, 30, "Stop Unit", Self)
 		Add(btnStopUnit)
 		
-		btnResetUnit = New FlxButton(320, 50, "Reset Unit", New BtnResetUnitClickListener(Self))
+		btnResetUnit = New FlxButton(320, 50, "Reset Unit", Self)
 		Add(btnResetUnit)
 		
 		legends = New FlxText(320, 90, 80, "Click in map to place or remove tile~n~nLegends:~nRed:Unit~nYellow:Goal~nBlue:Wall~nWhite:Path")
@@ -101,54 +101,18 @@ Class PlayState Extends FlxState
 		unit.Reset(0, 0)		
 		If (ACTION_GO) StopUnit()
 	End Method
-
-End Class
-
-Class BtnResetUnitClickListener Extends BtnClickListener
 	
-	Method New(state:PlayState)
-		Super.New(state)
-	End Method
-	
-	Method OnButtonClick:Void()
-		state.ResetUnit()
-	End Method
-
-End Class
-
-Class BtnStopUnitClickListener Extends BtnClickListener
-	
-	Method New(state:PlayState)
-		Super.New(state)
-	End Method
-	
-	Method OnButtonClick:Void()
-		state.StopUnit()
+	Method OnButtonClick:Void(button:FlxButton)
+		Select button
+			Case btnFindPath
+				MoveToGoal()
+				
+			Case btnResetUnit
+				ResetUnit()
+				
+			Case btnStopUnit
+				StopUnit()
+		End Select
 	End Method
 
-End Class
-
-Class BtnFindPathClickListener Extends BtnClickListener
-	
-	Method New(state:PlayState)
-		Super.New(state)
-	End Method
-	
-	Method OnButtonClick:Void()
-		state.MoveToGoal()
-	End Method
-
-End Class
-
-Class BtnClickListener Implements FlxButtonClickListener
-
-	Field state:PlayState
-
-	Method New(state:PlayState)
-		Self.state = state
-	End Method
-	
-	Method OnButtonClick:Void()
-	End Method
-	
 End Class
