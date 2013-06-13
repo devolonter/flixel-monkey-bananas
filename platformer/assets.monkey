@@ -5,8 +5,6 @@ Import flixel
 Import playstate
 Import assets
 
-Import flixel.flxtext.driver.angelfont
-
 Class Assets
 	Const PLAYER:String = "player"
 	
@@ -31,9 +29,6 @@ Class FlixelGame Extends FlxGame
 		
 		FlxAssetsManager.AddString(Assets.LEVEL_SKY, "mapCSV_Level1_Sky.txt")
 		FlxAssetsManager.AddImage(Assets.LEVEL_SKYIMAGE, "backdrop.png")
-		
-		FlxTextAngelFontDriver.Init()
-		FlxText.SetDefaultDriver(ClassInfo(FlxTextAngelFontDriver.ClassObject))
 	End Method
 
 End Class
