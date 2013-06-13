@@ -3,7 +3,7 @@ Strict
 Import flixel
 Import assets
 
-Class PlayState Extends FlxState
+Class PlayState Extends FlxState Implements FlxButtonClickListener
 	
 	Field topText:FlxText
 	
@@ -85,15 +85,15 @@ Class PlayState Extends FlxState
 		topText.Alignment = FlxText.ALIGN_CENTER
 		Add(topText)
 		
-		crateStorm = new FlxButton(2, FlxG.Height - 22, "Crate Storm", New BtnCrateStormClickListener(Self))
+		crateStorm = New FlxButton(2, FlxG.Height - 22, "Crate Storm", Self)
 		Add(crateStorm)
-		flxRiderButton = new FlxButton(82, FlxG.Height - 22, "Flixel Rider", New BtnFlixelRiderClickListener(Self))
+		flxRiderButton = New FlxButton(82, FlxG.Height - 22, "Flixel Rider", Self)
 		Add(flxRiderButton)
-		crateStormG1 = new FlxButton(162, FlxG.Height - 22, "Blue Group", New BtnCrateStormG1ClickListener(Self))
+		crateStormG1 = New FlxButton(162, FlxG.Height - 22, "Blue Group", Self)
 		Add(crateStormG1)
-		crateStormG2 = new FlxButton(242, FlxG.Height - 22, "Red Group", New BtnCrateStormG2ClickListener(Self))
+		crateStormG2 = New FlxButton(242, FlxG.Height - 22, "Red Group", Self)
 		Add(crateStormG2)
-		groupCollision = new FlxButton(202, FlxG.Height - 42, "Groups", New BtnGroupCollisionlickListener(Self))
+		groupCollision = New FlxButton(202, FlxG.Height - 42, "Groups", Self)
 		Add(groupCollision)
 		
 		FlxG.Mouse.Show()		
@@ -266,78 +266,25 @@ Class PlayState Extends FlxState
 			topText.Alpha = 1
 		End If
 	End Method
-
-End Class
-
-Class BtnFlixelRiderClickListener Extends BtnClickListener
 	
-	Method New(state:PlayState)
-		Super.New(state)
-	End Method
-	
-	Method OnButtonClick:Void()
-		state.OnFlixelRider()
-	End Method
-
-End Class
-
-Class BtnCrateStormClickListener Extends BtnClickListener
-	
-	Method New(state:PlayState)
-		Super.New(state)
-	End Method
-	
-	Method OnButtonClick:Void()
-		state.OnCrateStorm()
+	Method OnButtonClick:Void(button:FlxButton)
+		Select(button)
+			Case flxRiderButton
+				OnFlixelRider()
+			
+			Case crateStorm
+				OnCrateStorm()
+				
+			Case crateStormG1
+				OnBlue()
+				
+			Case crateStormG2
+				OnRed()
+				
+			Case groupCollision
+				OnCollideGroups()
+				
+		End Select
 	End Method
 
-End Class
-
-Class BtnCrateStormG1ClickListener Extends BtnClickListener
-	
-	Method New(state:PlayState)
-		Super.New(state)
-	End Method
-	
-	Method OnButtonClick:Void()
-		state.OnBlue()
-	End Method
-
-End Class
-
-Class BtnCrateStormG2ClickListener Extends BtnClickListener
-	
-	Method New(state:PlayState)
-		Super.New(state)
-	End Method
-	
-	Method OnButtonClick:Void()
-		state.OnRed()
-	End Method
-
-End Class
-
-Class BtnGroupCollisionlickListener Extends BtnClickListener
-	
-	Method New(state:PlayState)
-		Super.New(state)
-	End Method
-	
-	Method OnButtonClick:Void()
-		state.OnCollideGroups()
-	End Method
-
-End Class
-
-Class BtnClickListener Implements FlxButtonClickListener
-
-	Field state:PlayState
-
-	Method New(state:PlayState)
-		Self.state = state
-	End Method
-	
-	Method OnButtonClick:Void()
-	End Method
-	
 End Class
