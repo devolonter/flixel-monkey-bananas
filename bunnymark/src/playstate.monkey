@@ -30,7 +30,7 @@ Private
 	
 	Field addBunniesBtn:FlxButton
 	
-	Field removeBunniesBtn:RemoveBunniesButton
+	Field removeBunniesBtn:FlxButton
 	
 	Field bunnyCounter:FlxText
 	
@@ -71,7 +71,7 @@ Public
 		addBunniesBtn = New FlxButton(FlxG.Width - 80 - 20, 20, "Add Bunnies", Self)
 		Add(addBunniesBtn)
 		
-		removeBunniesBtn = New RemoveBunniesButton(Self)
+		removeBunniesBtn = New FlxButton(20, 20, "Remove", Self)
 		Add(removeBunniesBtn)
 		
 		bunnyCounter = New FlxText(0, 10, FlxG.Width - 20, "Bunnies: " + bunnies.Length)
@@ -111,8 +111,15 @@ Public
 		pirate.y = FlxG.Height - 1.3 * pirate.height + 70 - 30 * Sin(t / 1.5)
 	End Method
 	
-	Method OnButtonClick:Void()
-		AddBunies(incBunnies)
+	Method OnButtonClick:Void(button:FlxButton)
+		Select button
+			Case addBunniesBtn
+				AddBunies(incBunnies)
+				
+			Case removeBunniesBtn
+				RemoveBunnies(incBunnies)
+		End Select
+		
 		bunnyCounter.Text = "Bunnies: " + bunnies.Length
 	End Method
 	
@@ -133,22 +140,6 @@ Private
 			bunnies.Remove(bunny, True)
 			bunny.Kill()
 		Next
-	End Method
-
-End Class
-
-Class RemoveBunniesButton Extends FlxButton Implements FlxButtonClickListener
-	
-	Field state:PlayState
-	
-	Method New(state:PlayState)
-		Super.New(20, 20, "Remove", Self)
-		Self.state = state
-	End Method
-	
-	Method OnButtonClick:Void()
-		state.RemoveBunnies(state.incBunnies)
-		state.bunnyCounter.Text = "Bunnies: " + state.bunnies.Length
 	End Method
 
 End Class

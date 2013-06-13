@@ -2,7 +2,6 @@ Strict
 
 Import flixel
 Import playstate
-Import flixel.flxtext.driver.angelfont
 
 Class BunnyMark Extends FlxGame
 	
@@ -14,9 +13,6 @@ Class BunnyMark Extends FlxGame
 		FlxAssetsManager.AddImage("grass", "grass.png")
 		FlxAssetsManager.AddImage("pirate", "pirate.png")
 		FlxAssetsManager.AddImage("bunny", "wabbit_alpha.png")
-		
-		FlxTextAngelFontDriver.Init()
-		FlxText.SetDefaultDriver(ClassInfo(FlxTextAngelFontDriver.ClassObject))
 	End Method
 
 End Class
