@@ -3,7 +3,7 @@ Strict
 Import flixel
 Import assets
 
-Class PlayState Extends FlxState
+Class PlayState Extends FlxState Implements FlxButtonClickListener
 
 	Const TILE_WIDTH:Int = 16
 	Const TILE_HEIGHT:Int = 16
@@ -30,10 +30,10 @@ Class PlayState Extends FlxState
 		
 		_SetupPlayer()
 		
-		autoAltBtn = New FlxButton(4, FlxG.Height - 24, "AUTO", New BtnAutoAltClicklListener(Self))
+		autoAltBtn = New FlxButton(4, FlxG.Height - 24, "AUTO", Self)
 		Add(autoAltBtn)
 		
-		resetBtn = New FlxButton(8 + autoAltBtn.width, FlxG.Height - 24, "Reset", New BtnResetClickListener(Self))
+		resetBtn = New FlxButton(8 + autoAltBtn.width, FlxG.Height - 24, "Reset", Self)
 		Add(resetBtn)
 		
 		helperTxt = New FlxText(24 + autoAltBtn.width * 2, FlxG.Height - 30, 220, "Click to place tiles, Shift-Click to remove tiles, arrow keys to move")	
@@ -61,6 +61,60 @@ Class PlayState Extends FlxState
 	Method Draw:Void()
 		Super.Draw()
 		highlightBox.DrawDebug()
+	End Method
+	
+	Method OnButtonClick:Void(button:FlxButton)
+		Select button
+			Case autoAltBtn
+				Select(collisionMap.auto)
+					Case FlxTilemap.AUTO
+						collisionMap.LoadMap(FlxTilemap.ArrayToCSV(collisionMap.GetData(True),
+							collisionMap.widthInTiles), Assets.ALT_TILES,
+							PlayState.TILE_WIDTH, PlayState.TILE_HEIGHT, FlxTilemap.ALT)
+						
+					autoAltBtn.label.Text = "ALT"
+							
+					Case FlxTilemap.ALT
+						collisionMap.LoadMap(FlxTilemap.ArrayToCSV(collisionMap.GetData(True),
+							collisionMap.widthInTiles), Assets.EMPTY_TILES,
+							PlayState.TILE_WIDTH, PlayState.TILE_HEIGHT, FlxTilemap.OFF)
+							
+					autoAltBtn.label.Text = "OFF"
+							
+					Case FlxTilemap.OFF
+						collisionMap.LoadMap(FlxTilemap.ArrayToCSV(collisionMap.GetData(True),
+							collisionMap.widthInTiles), Assets.AUTO_TILES,
+							PlayState.TILE_WIDTH, PlayState.TILE_HEIGHT, FlxTilemap.AUTO)
+							
+					autoAltBtn.label.Text = "AUTO"
+							
+				End Select
+				
+			Case resetBtn
+				Select(collisionMap.auto)
+					Case FlxTilemap.AUTO
+						collisionMap.LoadMap(FlxAssetsManager.GetString(Assets.AUTO_MAP),
+							Assets.AUTO_TILES, PlayState.TILE_WIDTH, PlayState.TILE_HEIGHT, FlxTilemap.AUTO)
+							
+						player.x = 64
+						player.y = 220
+							
+					Case FlxTilemap.ALT
+						collisionMap.LoadMap(FlxAssetsManager.GetString(Assets.ALT_MAP),
+							Assets.ALT_TILES, PlayState.TILE_WIDTH, PlayState.TILE_HEIGHT, FlxTilemap.ALT)
+							
+						player.x = 64
+						player.y = 128
+							
+					Case FlxTilemap.OFF
+						collisionMap.LoadMap(FlxAssetsManager.GetString(Assets.EMPTY_MAP),
+							Assets.EMPTY_TILES, PlayState.TILE_WIDTH, PlayState.TILE_HEIGHT, FlxTilemap.OFF)
+							
+						player.x = 64
+						player.y = 64
+							
+				End Select
+		End Select
 	End Method
 
 Private	
@@ -120,85 +174,4 @@ Private
 		obj.y = (obj.y + obj.height / 2) Mod FlxG.Height - obj.height / 2
 	End Method
 
-End Class
-
-Class BtnAutoAltClicklListener Extends BtnClickListener
-
-	Method New(state:PlayState)
-		Super.New(state)
-	End Method
-	
-	Method OnButtonClick:Void()
-		Select (state.collisionMap.auto)
-			Case FlxTilemap.AUTO
-				state.collisionMap.LoadMap(FlxTilemap.ArrayToCSV(state.collisionMap.GetData(True), 
-					state.collisionMap.widthInTiles), Assets.ALT_TILES, 
-					PlayState.TILE_WIDTH, PlayState.TILE_HEIGHT, FlxTilemap.ALT)
-				
-			state.autoAltBtn.label.Text = "ALT"
-					
-			Case FlxTilemap.ALT
-				state.collisionMap.LoadMap(FlxTilemap.ArrayToCSV(state.collisionMap.GetData(True), 
-					state.collisionMap.widthInTiles), Assets.EMPTY_TILES, 
-					PlayState.TILE_WIDTH, PlayState.TILE_HEIGHT, FlxTilemap.OFF)
-					
-			state.autoAltBtn.label.Text = "OFF"
-					
-			Case FlxTilemap.OFF
-				state.collisionMap.LoadMap(FlxTilemap.ArrayToCSV(state.collisionMap.GetData(True), 
-					state.collisionMap.widthInTiles), Assets.AUTO_TILES, 
-					PlayState.TILE_WIDTH, PlayState.TILE_HEIGHT, FlxTilemap.AUTO)
-					
-			state.autoAltBtn.label.Text = "AUTO"
-					
-		End Select
-	End Method
-
-End Class
-
-Class BtnResetClickListener Extends BtnClickListener
-	
-	Method New(state:PlayState)
-		Super.New(state)
-	End Method
-	
-	Method OnButtonClick:Void()
-		Select (state.collisionMap.auto)
-			Case FlxTilemap.AUTO
-				state.collisionMap.LoadMap(FlxAssetsManager.GetString(Assets.AUTO_MAP), 
-					Assets.AUTO_TILES, PlayState.TILE_WIDTH, PlayState.TILE_HEIGHT, FlxTilemap.AUTO)
-					
-				state.player.x = 64
-				state.player.y = 220
-					
-			Case FlxTilemap.ALT
-				state.collisionMap.LoadMap(FlxAssetsManager.GetString(Assets.ALT_MAP), 
-					Assets.ALT_TILES, PlayState.TILE_WIDTH, PlayState.TILE_HEIGHT, FlxTilemap.ALT)
-					
-				state.player.x = 64
-				state.player.y = 128
-					
-			Case FlxTilemap.OFF
-				state.collisionMap.LoadMap(FlxAssetsManager.GetString(Assets.EMPTY_MAP), 
-					Assets.EMPTY_TILES, PlayState.TILE_WIDTH, PlayState.TILE_HEIGHT, FlxTilemap.OFF)
-					
-				state.player.x = 64
-				state.player.y = 64
-					
-		End Select
-	End Method
-
-End Class
-
-Class BtnClickListener Implements FlxButtonClickListener
-
-	Field state:PlayState
-
-	Method New(state:PlayState)
-		Self.state = state
-	End Method
-	
-	Method OnButtonClick:Void()
-	End Method
-	
 End Class
