@@ -2,7 +2,7 @@ Strict
 
 Import flixel
 
-Class PlayState Extends FlxState
+Class PlayState Extends FlxState Implements FlxButtonClickListener
 	
 	Field theEmiter:FlxEmitter
 	
@@ -40,10 +40,10 @@ Class PlayState Extends FlxState
 			theEmiter.Add(whitePixel)
 		Next
 		
-		collisionButton = New FlxButton(2, FlxG.Height - 22, "Collision", New BtnCollisionClicklListener(Self))
+		collisionButton = New FlxButton(2, FlxG.Height - 22, "Collision", Self)
 		Add(collisionButton)
 		
-		gravityButton = New FlxButton(82, FlxG.Height - 22, "Gravity", New BtnGravityClickListener(Self))
+		gravityButton = New FlxButton(82, FlxG.Height - 22, "Gravity", Self)
 		Add(gravityButton)
 		
 		topText = New FlxText(0, 2, FlxG.Width, "Welcome")
@@ -151,42 +151,15 @@ Class PlayState Extends FlxState
 		
 		topText.Alpha = 1
 	End Method
-
-End Class
-
-Class BtnCollisionClicklListener Extends BtnClickListener
-
-	Method New(state:PlayState)
-		Super.New(state)
-	End Method
 	
-	Method OnButtonClick:Void()
-		state.OnCollision()
+	Method OnButtonClick:Void(button:FlxButton)
+		Select button
+			Case collisionButton
+				OnCollision()
+				
+			Case gravityButton
+				OnGravity()
+		End Select
 	End Method
 
-End Class
-
-Class BtnGravityClickListener Extends BtnClickListener
-	
-	Method New(state:PlayState)
-		Super.New(state)
-	End Method
-	
-	Method OnButtonClick:Void()
-		state.OnGravity()
-	End Method
-
-End Class
-
-Class BtnClickListener Implements FlxButtonClickListener
-
-	Field state:PlayState
-
-	Method New(state:PlayState)
-		Self.state = state
-	End Method
-	
-	Method OnButtonClick:Void()		
-	End Method
-	
 End Class
