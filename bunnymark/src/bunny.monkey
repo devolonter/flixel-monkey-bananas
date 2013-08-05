@@ -5,7 +5,7 @@ Import playstate
 
 Class Bunny Extends FlxSprite
 
-	Global ClassObject:Object
+	Global __CLASS__:Object
 
 	Method New()
 		Super.New()

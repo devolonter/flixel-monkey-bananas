@@ -126,7 +126,7 @@ Public
 Private
 	Method AddBunies:Void(numToAdd:Int)
 		For Local i:Int = 0 Until numToAdd
-			bunny = Bunny(bunnies.Recycle(ClassInfo(Bunny.ClassObject)))
+			bunny = Bunny(bunnies.Recycle(Bunny.__CLASS__))
 			bunny.Create(gravity)
 			bunnies.Add(bunny)
 		Next
