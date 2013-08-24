@@ -122,14 +122,11 @@ Public
 		_hud.Add(_gunjam)
 		
 		_hud.SetAll("scrollFactor", New FlxPoint())
-		_hud.SetAll("Cameras", ArrayBoxer<Int>.Box([FlxG.Camera.ID]))
+		_hud.Cameras =[FlxG.Camera]
 		
 		FlxG.PlayMusic(SoundAssets.MODE)
 		FlxG.Flash($FF131C1B)
-		_fading = False
-		
-		'move main camera in screen center
-		'FlxG.FullScreen()		
+		_fading = False	
 	End Method
 	
 	Method Destroy:Void()
@@ -225,7 +222,7 @@ Public
 		object2.Hurt(1)
 	End Method
 	
-	Method OnFadeComplete:Void()
+	Method OnCameraFadeComplete:Void(camera:FlxCamera)
 		FlxG.Music.Stop()
 		FlxG.SwitchState(New VictoryState())
 	End Method

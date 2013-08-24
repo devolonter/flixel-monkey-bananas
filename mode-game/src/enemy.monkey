@@ -6,7 +6,7 @@ Import enemybullet
 
 Class Enemy Extends FlxSprite
 
-	Global ClassObject:Object
+	Global __CLASS__:Object
 	
 Private
 	Field _player:Player
@@ -114,7 +114,7 @@ Public
 			End If
 			
 			If (shoot) Then
-				Local b:EnemyBullet = EnemyBullet(_bullets.Recycle(ClassInfo(EnemyBullet.ClassObject)))				
+				Local b:EnemyBullet = EnemyBullet(_bullets.Recycle(EnemyBullet.__CLASS__))				
 				b.Shoot(GetMidpoint(_helperPoint), angle)
 			End If
 		End If

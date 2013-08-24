@@ -46,7 +46,7 @@ Public
 		End If
 	End Method
 	
-	Method OnFadeComplete:Void()
+	Method OnCameraFadeComplete:Void(camera:FlxCamera)
 		FlxG.SwitchState(New PlayState())
 	End Method
 	

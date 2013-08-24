@@ -21,9 +21,7 @@ Class PlayState Extends FlxState Implements FlxOverlapNotifyListener
 	
 	Global ScoresText:String
 	
-	Method Create:Void()
-		FlxG.Framerate = 60
-	
+	Method Create:Void()	
 		If (ScoresText.Length() = 0) Then
 			ScoresText = "WELCOME TO FLX INVADERS"
 		End If

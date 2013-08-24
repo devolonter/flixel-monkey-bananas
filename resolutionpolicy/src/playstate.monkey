@@ -7,9 +7,7 @@ Class PlayState Extends FlxState
 
 	Field currentPolicy:FlxText
 	
-	Method Create:Void()
-		FlxG.Framerate = 60
-	
+	Method Create:Void()	
 		Add(New FlxSprite(0, 0, "bg"))
 	
 		For Local i:Int = 0 To 20

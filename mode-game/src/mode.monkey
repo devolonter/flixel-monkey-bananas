@@ -4,12 +4,10 @@ Import flixel
 Import menustate
 Import assets
 
-Import flixel.flxtext.driver.angelfont
-
 Class Mode Extends FlxGame
 	
 	Method New()
-		Super.New(320, 240, GetClass("MenuState"), 1, 50, 50)
+		Super.New(320, 240, GetClass("MenuState"), 1, 50)
 	End Method
 	
 	Method OnCreate:Int()
@@ -51,12 +49,6 @@ Class Mode Extends FlxGame
 		
 		FlxAssetsManager.AddString(StringAssests.ATTRACT_1, "attract1.txt")
 		FlxAssetsManager.AddString(StringAssests.ATTRACT_2, "attract2.txt")
-		
-		FlxTextAngelFontDriver.Init()
-		FlxText.SetDefaultDriver(ClassInfo(FlxTextAngelFontDriver.ClassObject))
-		
-		Local systemFont:FlxFont = FlxAssetsManager.GetFont(FlxText.SYSTEM_FONT, FlxText.DRIVER_ANGELFONT)
-		systemFont.SetPath(32, "big_system_font.txt")
 	End Method
 
 End Class

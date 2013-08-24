@@ -4,8 +4,6 @@ Import flixel
 Import playstate
 Import assets
 
-Import flixel.flxtext.driver.angelfont
-
 Class Tilemap Extends FlxGame
 
 	Method New()
@@ -21,9 +19,6 @@ Class Tilemap Extends FlxGame
 		FlxAssetsManager.AddString(Assets.ALT_MAP, "default_alt.txt")
 		FlxAssetsManager.AddString(Assets.AUTO_MAP, "default_auto.txt")
 		FlxAssetsManager.AddString(Assets.EMPTY_MAP, "default_empty.txt")
-		
-		FlxTextAngelFontDriver.Init()
-		FlxText.SetDefaultDriver(ClassInfo(FlxTextAngelFontDriver.ClassObject))
 	End Method
 
 End Class

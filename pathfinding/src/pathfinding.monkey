@@ -4,8 +4,6 @@ Import flixel
 Import playstate
 Import assets
 
-Import flixel.flxtext.driver.angelfont
-
 Class PathFinding Extends FlxGame
 
 	Method New()
@@ -15,9 +13,6 @@ Class PathFinding Extends FlxGame
 	Method OnContentInit:Void()
 		FlxAssetsManager.AddImage(Assets.TILES, "tiles.png")
 		FlxAssetsManager.AddString(Assets.MAP, "pathfinding_map.txt")
-		
-		FlxTextAngelFontDriver.Init()
-		FlxText.SetDefaultDriver(ClassInfo(FlxTextAngelFontDriver.ClassObject))
 	End Method
 
 End Class

@@ -55,7 +55,7 @@ Public
 		_heplerPoint = Null	
 	End Method
 	
-	Method Update:Void()
+	Method Update:Void()	
 		If (Not alive) Then
 			_restart += FlxG.Elapsed
 			
@@ -122,7 +122,7 @@ Public
 				FlxG.Play(SoundAssets.JAM)
 			Else
 				GetMidpoint(_heplerPoint)
-				Bullet(_bullets.Recycle(ClassInfo(Bullet.ClassObject))).Shoot(_heplerPoint, _aim)
+				Bullet(_bullets.Recycle(Bullet.__CLASS__)).Shoot(_heplerPoint, _aim)
 				
 				If (_aim = DOWN) velocity.y -= 36
 			End If

@@ -3,9 +3,6 @@ Strict
 Import flixel
 Import playstate
 Import assets
-
-Import flixel.flxtext.driver.angelfont
-
 Class Replay Extends FlxGame
 
 	Method New()
@@ -15,9 +12,6 @@ Class Replay Extends FlxGame
 	Method OnContentInit:Void()
 		FlxAssetsManager.AddImage(Assets.TILES, "tiles.png")
 		FlxAssetsManager.AddString(Assets.MAP, "simple_map.txt")
-		
-		FlxTextAngelFontDriver.Init()
-		FlxText.SetDefaultDriver(ClassInfo(FlxTextAngelFontDriver.ClassObject))
 	End Method
 
 End Class

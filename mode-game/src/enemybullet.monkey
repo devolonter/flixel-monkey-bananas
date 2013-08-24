@@ -5,7 +5,7 @@ Import assets
 
 Class EnemyBullet Extends FlxSprite
 	
-	Global ClassObject:Object
+	Global __CLASS__:Object
 
 	Field speed:Float
 	Field _helperPoint:FlxPoint

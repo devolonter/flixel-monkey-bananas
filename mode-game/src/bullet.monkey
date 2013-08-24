@@ -5,7 +5,7 @@ Import assets
 
 Class Bullet Extends FlxSprite
 
-	Global ClassObject:Object
+	Global __CLASS__:Object
 	
 	Field speed:Float
 	

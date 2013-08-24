@@ -8,9 +8,7 @@ Class PlayState Extends FlxState
 	Field player:FlxSprite	
 	Field level:MapLevel
 			
-	Method Create:Void()
-		FlxG.Framerate = 60
-	
+	Method Create:Void()	
 		level = New MapLevel
 		Add(level);
 		
