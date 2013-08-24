@@ -7,11 +7,12 @@ Class Bunny Extends FlxSprite
 
 	Global __CLASS__:Object
 
-	Method New(gravity:Float = 0)
+	Method New()
 		Super.New()
-		
 		LoadGraphic("bunny")
-		
+	End Method
+	
+	Method Create:Void(gravity:Float = 0)
 		velocity.x = 50 * (Rnd() * 5)
 		velocity.y = 50 * ( (Rnd() * 5) - 2.5)
 		acceleration.y = gravity
